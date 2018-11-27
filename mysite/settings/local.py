@@ -154,7 +154,3 @@ LOGIN_EXEMPT_URLS = (
         r'admin/',
 )
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
-)
-
