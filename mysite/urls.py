@@ -18,6 +18,8 @@ from django.contrib import admin
 from main.views import index
 from accounts.views import user_login, logout_view
 from django.contrib.auth import logout
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
