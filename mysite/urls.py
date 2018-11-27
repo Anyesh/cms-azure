@@ -18,12 +18,11 @@ from django.contrib import admin
 from main.views import index
 from accounts.views import user_login, logout_view
 from django.contrib.auth import logout
-from django.urls import path
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    path('login/', user_login, name="login"),
-    path('logout/', logout_view, name='logout'),
-    path('', index, name="main"),
+    url(r'^login/', user_login, name="login"),
+    url(r'^logout/', logout_view, name='logout'),
+    url(r'^', index, name="main"),
 ]
