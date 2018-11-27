@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CMS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Stock and Transactions Management System">
+    <meta name="author" content="Bibeki">
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cms.css' %}">
+
+</head>
+<body>
+  <div class="bg-white  border-bottom shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">CMS</a>
+
+  </nav>
+  </div>
+   <div class="container">
+     <div class="row _login">
+       <div class="col-sm-6 mx-auto">
+          <div class="row">
+            <div class="col-md-12 text-center">
+            <!-- error -->
+              {% if form.errors %}
+                <div class="alert alert-danger no-border">
+                  <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                  {% for err in form.non_field_errors%}
+                    <p>{{err}}</p>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              <!-- message -->
+              {% if messages %}
+                <div class="alert alert-danger no-border">
+                  <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                  {% for message in messages %}
+                    <p>{{message}}</p>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+          </div>
+        </div>
+         <form class="form-signin" method="POST">{% csrf_token %}
+
+           <div class="text-center mb-4 mt-5">
+             <h1>CMS</h1>
+             <hr />
+             <p>Container Management System</p>
+
+             <hr>
+               </div>
+
+               <div class="form-group has-feedback has-feedback-left">
+                 {{form.username}}
+                 <div class="form-control-feedback">
+                   <i class="icon-user text-muted"></i>
+                 </div>
+               </div>
+
+               <div class="form-group has-feedback has-feedback-left">
+                 {{form.password}}
+                 <div class="form-control-feedback">
+                   <i class="icon-lock2 text-muted"></i>
+                 </div>
+               </div>
+
+
+               <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+
+
+
+         </form>
+       </div>
+     </div>
+   </div>
+<footer>
+    {% include 'main/footer.html' %}
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+</body>
+</html>

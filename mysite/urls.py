@@ -16,8 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from main.views import index
+from accounts.views import user_login, logout_view
+from django.contrib.auth import logout
+from django.urls import path
+
 
 urlpatterns = [
-    url(r'^', index, name="index"),
     url(r'^admin/', admin.site.urls),
+    path('login/', user_login, name="login"),
+    path('logout/', logout_view, name='logout'),
+    path('', index, name="main"),
 ]
