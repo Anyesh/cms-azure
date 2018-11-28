@@ -1,5 +1,3 @@
-
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 mt-3">
@@ -14,66 +12,14 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-8 mx-auto" style="margin-top: 14vh">
-
-            <div class="accordion mb-5" id="books">
-
-
-
-            </div>
-            <!-- Deliveries -->
-             <div class="card mb-5">
-            <div class="card-header bg-dark text-light text-center">
-              <h5>TITLE</h5>
-            </div>
-            <div class="card-body table-responsive">
-              <table class="table table-bordered  fullwidth">
-                <thead>
-                  <tr>
-                    <th>Date(Nep)</th>
-                    <th>Date(Eng)</th>
-
-                    <th>Customer's Name</th>
-                    <th>Address</th>
-                    <th>Note</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                  {% if data %}
-                      {% for d in data %}
-                      <tr>
-                      <td>
-                        {{d.date|date:"Y-m-d"}}
-                      </td>
-                      <td>{{d.date_eng}}</td>
-                      <td>
-                          {{d.customer}}
-                      </td>
-                      <td>
-                          {{d.customer.address}}
-                        </td>
-                        <td>
-                          {{d.note}}
-                      </td>
-
-                  </tr>
-                      {% endfor %}
-                      {% else %}
-                      <tr class="text-center">
-                        <td colspan="4" >No Data</td>
-                      </tr>
-                      {% endif %}
-
-                </tbody>
-            </table>
-            <small class="text-muted">Note: <strong>User: {{request.user}}</strong> will be notified one day before the delivery via email on <strong>{{request.user.email}}</strong></small>
-
-            </div>
-            <div class="card-footer text-center">
-
-            </div>
-           </div>
+        <div class="card mb-5">
+        <div class="card-header bg-dark text-light text-center">
+          <h5>Reports Summary</h5>
         </div>
+        <div class="card-body table-responsive">
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 

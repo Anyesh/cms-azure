@@ -3,10 +3,11 @@ from django.views import View
 from .forms import AddContainerForm, AddCountryForm
 from django.urls import reverse
 from django.contrib import messages
-from .models import Container
+from .models import Container, Country, Booking
 
 def index(request):
-    return render(request, 'main/index.html')
+    data = Country.objects.all()
+    return render(request, 'main/index.html', {"data": data})
 
 
 def addCountry(request):
@@ -53,3 +54,43 @@ def viewContainers(request):
 
 def reports(request):
     return render(request, 'reports/index.html')
+
+
+def searchContainers(request):
+    data = Country.objects.all()
+    country = request.GET.get('country')
+    print(country)
+    containers = Container.objects.filter(country__title=country)
+    ctx = {"data": data, 'containers': containers}
+    return render(request, 'search/results.html', ctx)
+
+
+def myBookings(request):
+    bookings = Booking.objects.filter(user=request.user)
+    return render(request, 'bookings/index.html', {'bookings': bookings})
+
+
+def bookContainer(request, cid):
+    user = request.user
+    if not user:
+        messages.error(request, 'Not a valid user!')
+        return HttpResponseRedirect(reverse('search'))
+
+    container = Container.objects.get(cid=cid)
+    if not container:
+        messages.error(request, 'Not a valid container!')
+        return HttpResponseRedirect(reverse('search'))
+
+    _, created = Booking.objects.get_or_create(user=user, container=container)
+    if not created:
+        container.available = False
+        container.save()
+        messages.success(request, 'Container Booked!')
+        return HttpResponseRedirect(reverse('search'))
+    else:
+        messages.error(request, 'Container Unavailable!')
+        return HttpResponseRedirect(reverse('search'))
+
+
+
+

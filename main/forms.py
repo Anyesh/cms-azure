@@ -1,5 +1,5 @@
 from django import forms
-from .models import Container, Country
+from .models import Container, Country, Booking
 
 
 class AddContainerForm(forms.ModelForm):
@@ -23,3 +23,8 @@ class AddCountryForm(forms.ModelForm):
         'title': forms.TextInput(attrs={'placeholder': 'Country Name', 'class': 'form-control'}),
 
         }
+
+class BookContainerForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ['container']

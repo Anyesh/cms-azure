@@ -1,11 +1,12 @@
 {% extends 'main/master.html' %}
+
 {% block content %}
 <div class="container">
     <div class="row mt-5">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header bg-dark text-light text-center">
-                    View Bookings
+                    {{request.user}}'s Bookings
                 </div>
             </div>
             <div class="card-body">
@@ -13,22 +14,23 @@
                     <thead>
                        <tr>
                            <th>CID</th>
-                           <th>Country</th>
+                           <th>Booked timestamp</th>
                            <th>Status</th>
-                           <th>Timestamp</th>
+                           <th>Action</th>
                        </tr>
                    </thead>
                    <tbody>
-                    {% for data in containers %}
+                    {% for data in bookings %}
                         <tr>
-                            <td>{{data.cid}}</td>
-                            <td>{{data.country.title}}</td>
+                            <td>{{data.bid}}</td>
+                            <td>{{data.timestamp}}</td>
                             {% if data.available %}
                                 <td><span style="color: green">Available</span></td>
                                 {% else %}
-                                <td><span style="color: red">Unavailable</span></td>
+                                <td><span style="color: red">Booked</span></td>
                             {% endif %}
-                            <td>{{data.timestamp}}</td>
+                            <td><button class="btn btn-danger">Delete</button></td>
+
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -37,4 +39,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

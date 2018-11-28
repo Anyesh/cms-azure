@@ -1,0 +1,88 @@
+{% extends 'main/master.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto text-center mt-5">
+      <!-- message -->
+      {% if messages %}
+        <div class="alert alert-info no-border">
+          <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+          {% for message in messages %}
+            <p>{{message}}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+  </div>
+  </div>
+  <div class="row">
+      <div class="col-sm-8 mx-auto" style="margin-top: 4vh">
+
+          <div class="card mb-5">
+          <div class="card-header bg-dark text-light text-center">
+            <h5>Search for the available Containers</h5>
+          </div>
+          <div class="card-body table-responsive">
+            <form method="GET" action="{% url 'search' %}">
+              <div class="form-row align-items-center">
+                 <div class="col-10">
+                  <select class="custom-select" id="_country" name="country">
+                    {% for d in data %}
+                    <option value="{{d.title}}">{{d.title}}</option>
+                    {% endfor %}
+                  </select>
+                 </div>
+                 <div class="col-2">
+                  <button class="btn btn-block">Search</button>
+                 </div>
+               </div>
+            </form>
+          </div>
+        <!--   <div class="card-footer text-center">
+
+          </div> -->
+         </div>
+      </div>
+  </div>
+    <div class="row mt-2">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header bg-dark text-light text-center">
+                    Search results
+                </div>
+            </div>
+            <div class="card-body">
+                <table id="containerTable" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                       <tr>
+                           <th>CID</th>
+                           <th>Country</th>
+                           <th>Created timestamp</th>
+                           <th>Status</th>
+                           <th>Action</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                    {% for data in containers %}
+                        <tr>
+                            <td>{{data.cid}}</td>
+                            <td>{{data.country.title}}</td>
+                            <td>{{data.timestamp}}</td>
+                            {% if data.available %}
+                                <td><span style="color: green">Available</span></td>
+                                <td><a class="btn btn-info" role="button" href="{% url 'book' data.cid %}">Book</a></td>
+                                {% else %}
+                                <td><span style="color: red">Unavailable</span></td>
+                            {% endif %}
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
