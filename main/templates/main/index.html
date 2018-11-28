@@ -21,73 +21,8 @@
 
             <div class="accordion mb-5" id="books">
 
-              <div class="card">
 
-                <div class="card-header bg-dark text-light" id="headingOne">
-                  <h5 class="mb-0 text-center">
-                    Books
-                  </h5>
-                </div>
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#salesBook" aria-expanded="true" aria-controls="salesBook">
-                      Sales Book
-                    </button>
-                  </h5>
-                </div>
 
-                <div id="salesBook" class="collapse" aria-labelledby="headingOne" data-parent="#books">
-                  <div class="card-body">
-                    <div class="list-group">
-                      <a href="{% url 'addcustomer' %}" class="list-group-item list-group-item-action">
-                        Add Customer
-                      </a>
-                      <a href="{% url 'sTransaction' %}" class="list-group-item list-group-item-action">Add Transaction</a>
-                      <a href="{% url 'viewSTransaction' %}" class="list-group-item list-group-item-action">View Transactions</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingTwo">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#purchaseBook" aria-expanded="false" aria-controls="purchaseBook">
-                     Purchase Book
-                    </button>
-                  </h5>
-                </div>
-                <div id="purchaseBook" class="collapse" aria-labelledby="headingTwo" data-parent="#books">
-                  <div class="card-body">
-                    <div class="list-group">
-                      <a href="{% url 'addsupplier' %}" class="list-group-item list-group-item-action">
-                        Add Supplier
-                      </a>
-                      <a href="{% url 'pTransaction' %}" class="list-group-item list-group-item-action">Add Transaction</a>
-                      <a href="{% url 'viewPTransaction' %}" class="list-group-item list-group-item-action">View Transactions</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingThree">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#inventoryBook" aria-expanded="false" aria-controls="inventoryBook">
-                      Inventory Book
-                    </button>
-                  </h5>
-                </div>
-                <div id="inventoryBook" class="collapse" aria-labelledby="headingThree" data-parent="#books">
-                  <div class="card-body">
-                    <div class="list-group">
-                      <a class="list-group-item list-group-item-action" href="{% url 'addproduct' %}">Add Product</a>
-                      <a class="list-group-item list-group-item-action" href="{% url 'inventorybook' %}">Add Records</a>
-                      <a class="list-group-item list-group-item-action" href="{% url 'viewrecord' %}">View Records</a>
-
-                      <a class="list-group-item list-group-item-action" href="{% url 'inventoryreport' %}">Reports</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
             <!-- Deliveries -->
              <div class="card mb-5">
@@ -139,9 +74,7 @@
 
             </div>
             <div class="card-footer text-center">
-              <a class="btn btn-link collapsed" href="{% url 'delivery' %}" >
-                Add Delivery Info
-              </a>
+
             </div>
            </div>
         </div>
