@@ -162,6 +162,6 @@ LOGIN_REDIRECT_URL = 'main'
 LOGOUT_REDIRECT_URL = '/login/'
 
 LOGIN_EXEMPT_URLS = (
-        r'admin/',
+        r'admin/', r'register/'
 )
 

@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from main.views import index
-from accounts.views import user_login, logout_view
+from accounts.views import user_login, logout_view, registerUser
 from django.contrib.auth import logout
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,6 +26,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', user_login, name="login"),
     url(r'^logout/', logout_view, name='logout'),
+    url(r'^register/', registerUser, name='register'),
+
     url(r'^', include('main.urls')),
 ]
 

@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
    <!--  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/cms.css' %}"> -->
-
+    <style type="text/css">
+    #id_country{
+      width: 100%
+    }
+    </style>
 </head>
 <body>
   <div class="bg-white  border-bottom shadow-sm">
@@ -53,7 +57,7 @@
 
               <!-- message -->
               {% if messages %}
-                <div class="alert alert-danger no-border">
+                <div class="alert alert-info no-border">
                   <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
                   {% for message in messages %}
                     <p>{{message}}</p>
@@ -68,31 +72,35 @@
            <div class="text-center mb-4 mt-5">
              <h1>CMS</h1>
              <hr />
-             <p>Container Management System</p>
+             <p>User Registration Form</p>
 
              <hr>
                </div>
 
-               <div class="form-group has-feedback has-feedback-left">
-                 {{form.username}}
+               <div class="form-row">
+                <div class="col">
+                 {{form.first_name}}
+                </div>
+                <div class="col">
+
+                 {{form.last_name}}
+               </div>
+               </div>
+               <div class="form-group mt-3">
+                <label>Country:</label>
+                 {{form.country}}
+               </div>
+               <div class="form-group">
+                {{form.username}}
+              </div>
+              <div class="form-group">
+                {{form.password}}
+              </div>
                  <div class="form-control-feedback">
                    <i class="icon-user text-muted"></i>
                  </div>
                </div>
-
-               <div class="form-group has-feedback has-feedback-left">
-                 {{form.password}}
-                 <div class="form-control-feedback">
-                   <i class="icon-lock2 text-muted"></i>
-                 </div>
-               </div>
-               <!-- <select class="custom-select custom-select-md mb-2">
-                 <option selected>Login as</option>
-                 <option value="admin">Admin</option>
-                 <option value="normie">Normal User</option>
-               </select> -->
-
-               <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+               <button class="btn btn-lg btn-primary btn-block" type="submit">Signup</button>
          </form>
        </div>
      </div>
