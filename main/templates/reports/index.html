@@ -2,6 +2,30 @@
 {% block content %}
 <div class="container">
     <div class="row mt-5">
+        <div class="col-sm-6 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-light text-center">
+                    Schedule Search
+                </div>
+            </div>
+            <div class="card-body">
+                <form method="GET" action="{% url 'reports' %}">
+                    <div class="form-row">
+                        <div class="col-4">
+                            <input type="date" name="from" class="form-control" placeholder="From date" required="required">
+                        </div>
+                        <div class="col-4">
+                            <input type="date" name="to" class="form-control" placeholder="To date" required="required">
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-info btn-block" >Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header bg-dark text-light text-center">
@@ -12,23 +36,37 @@
                 <table id="containerTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                        <tr>
-                           <th>CID</th>
-                           <th>Country</th>
+                           <th>BID</th>
+                           <th>Departure Location</th>
+                           <th>Arrival Location</th>
                            <th>Status</th>
+
                            <th>Timestamp</th>
+                           <th>Action</th>
+                           <th>Received Status</th>
                        </tr>
                    </thead>
                    <tbody>
-                    {% for data in containers %}
+                    {% for data in bookings %}
                         <tr>
-                            <td>{{data.cid}}</td>
-                            <td>{{data.country.title}}</td>
-                            {% if data.available %}
+                            <td>{{data.bid}}</td>
+                            <td>{{data.container.country}}</td>
+                            <td>{{data.location}}</td>
+                            {% if data.container.available %}
                                 <td><span style="color: green">Available</span></td>
                                 {% else %}
                                 <td><span style="color: red">Unavailable</span></td>
                             {% endif %}
+
                             <td>{{data.timestamp}}</td>
+                            {% if data.container.departed %}
+                                <td>Departed</td>
+                            {% else %}
+                            <td>
+                                <a class="btn btn-info btn-block" role="button" href="{% url 'confirm-book' data.container.cid data.bid %}">Confirm Book</a>
+                            </td>
+                            {% endif %}
+                            <td>{{data.container.received}}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
