@@ -7,6 +7,8 @@ from django.conf import settings
 from django import forms
 from django.contrib import messages
 from django.contrib.auth.models import User
+# from cms.core.models import User
+
 from django.contrib.auth import logout
 
 
@@ -19,6 +21,7 @@ def user_login(request):
     if form.is_valid():
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
+
 
         if username and password:
             user = authenticate(username=username, password=password)

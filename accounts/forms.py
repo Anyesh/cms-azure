@@ -15,6 +15,7 @@ class UserLoginForm(forms.Form):
         password = self.cleaned_data.get('password')
 
         if username and password:
+
             user = authenticate(username=username, password=password)
 
             if not user:
@@ -26,6 +27,6 @@ class UserLoginForm(forms.Form):
             if not user.is_active:
                 raise forms.ValidationError('user is inactive.')
         else:
-            raise forms.ValidationError('username or password is required.')
+            raise forms.ValidationError('username and password is required.')
 
         return super(UserLoginForm, self).clean(*args, **kwargs)
