@@ -1,0 +1,59 @@
+{% extends 'main/master.html' %}
+{% block content %}
+<style type="text/css">
+    #id_country{
+        width: 100%
+    }
+</style>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto text-center mt-5">
+          <!-- error -->
+            {% if form.errors %}
+              <div class="alert alert-danger no-border">
+                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                {% for err in form.non_field_errors%}
+                  <p>{{err}}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <!-- message -->
+            {% if messages %}
+              <div class="alert alert-info no-border">
+                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                {% for message in messages %}
+                  <p>{{message}}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 mx-auto">
+                <div class="card mt-5">
+                    <div class="card-header bg-dark text-light text-center">
+                      <h5>Add Container</h5>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <form method="post">{% csrf_token %}
+                            <div class="form-group">
+                                <label>Container ID</label>
+                                {{form.cid}}
+                            </div>
+                            <div class="form-group">
+                                <label>Country</label>
+                                {{form.country}}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
