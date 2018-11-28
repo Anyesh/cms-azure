@@ -1,12 +1,29 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.views import View
-from .forms import AddContainerForm
+from .forms import AddContainerForm, AddCountryForm
 from django.urls import reverse
 from django.contrib import messages
 from .models import Container
 
 def index(request):
     return render(request, 'main/index.html')
+
+
+def addCountry(request):
+    if request.method == 'POST':
+        form = AddCountryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Country added successfully.')
+            return HttpResponseRedirect(reverse('add-container'))
+        else:
+            messages.error(request, 'There was an error!!')
+            return HttpResponseRedirect(reverse('add-container'))
+    else:
+        form = AddCountryForm(None)
+        ctx = {"form": form}
+        return render(request, 'container/addCountry.html', ctx)
+
 
 
 class AddContainer(View):
@@ -23,7 +40,7 @@ class AddContainer(View):
             messages.success(request, 'Container added successfully.')
             return HttpResponseRedirect(reverse('add-container'))
         else:
-            messages.success(request, 'Container ID Should be unique. Choose different one.')
+            messages.error(request, 'Container ID Should be unique. Choose different one.')
             return HttpResponseRedirect(reverse('add-container'))
 
 
@@ -34,5 +51,5 @@ def viewContainers(request):
 
 
 
-def bookings(request):
-    return render(request, 'bookings/index.html')
+def reports(request):
+    return render(request, 'reports/index.html')

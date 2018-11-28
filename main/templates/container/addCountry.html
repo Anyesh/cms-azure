@@ -34,29 +34,17 @@
             <div class="col-sm-6 mx-auto">
                 <div class="card mt-5">
                     <div class="card-header bg-dark text-light text-center">
-                      <h5>Add Container</h5>
+                      <h5>Add Country</h5>
                     </div>
                     <div class="card-body table-responsive">
                         <form method="post">{% csrf_token %}
                             <div class="form-group">
-                                <label>Container ID</label>
-                                {{form.cid}}
+                                <label>Country Name: </label>
+                                {{form.title}}
                             </div>
-                            <div class="form-group">
-                                <div class="form-row">
-                                    <div class="col-10">
-                                        <label>Country</label>
-                                        {{form.country}}
-                                    </div>
-                                    <div class="col-2">
-                                      <a class="btn btn-primary mt-4 btn-sm" href="{% url 'add-country' %}" role="button">+ Add</a>
-                                    </div>
-                                  </div>
 
-                                </div>
-                            </div>
                             <div class="form-group">
-                                <button class="btn btn-primary btn-block" >Add</button>
+                                <button class="btn btn-primary btn-block">Add</button>
                             </div>
                         </form>
                     </div>
@@ -65,5 +53,4 @@
         </div>
 
     </div>
-
 {% endblock %}

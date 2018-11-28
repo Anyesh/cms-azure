@@ -24,7 +24,11 @@
                         <tr>
                             <td>{{data.cid}}</td>
                             <td>{{data.country.title}}</td>
-                            <td>{{data.available}}</td>
+                            {% if data.available %}
+                                <td><span style="color: green">Available</span></td>
+                                {% else %}
+                                <td><span style="color: red">Unavailable</span></td>
+                            {% endif %}
                             <td>{{data.timestamp}}</td>
                         </tr>
                     {% endfor %}
