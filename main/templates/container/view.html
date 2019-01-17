@@ -20,7 +20,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header bg-dark text-light text-center">
-                    Added Containers
+                     Containers List
                 </div>
             </div>
             <div class="card-body">
@@ -30,8 +30,7 @@
                            <th>CID</th>
                            <th>Country</th>
                            <th>Timestamp</th>
-                           <th>Departed</th>
-                           <th>Received</th>
+
                            <th>Status</th>
                            <th>Action</th>
                        </tr>
@@ -42,8 +41,7 @@
                             <td>{{data.cid}}</td>
                             <td>{{data.country.title}}</td>
                             <td>{{data.timestamp}}</td>
-                            <td>{{data.departed}}</td>
-                            <td>{{data.received}}</td>
+
                             {% if data.available %}
                                 <td><span style="color: green">Available</span></td>
                                 <td><button  class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button></td>
